@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class IntegriVideoSettingsModal {
     WebDriver driver;
-    //WebDriverWait wait = new WebDriverWait(driver, 12);
+    WebDriverWait wait;
     By settings = By.xpath("//span[text()=' Settings']");
     By guest = By.name("userName");
     By eMail = By.name("userEmail");
@@ -22,6 +22,7 @@ public class IntegriVideoSettingsModal {
 
     public IntegriVideoSettingsModal(WebDriver driver){
         this.driver = driver;
+        wait = new WebDriverWait(driver, 7);
     }
 
     public void inputSettings (){
@@ -40,8 +41,8 @@ public class IntegriVideoSettingsModal {
     public void setSaveSettings(){
         driver.findElement(saveSettings).click();
     }
-    public String  checkDataSettings(){
-        //wait.until(ExpectedConditions.textToBe(dataSettings, "editedText"));
+    public String  checkDataSettings(String text){
+        wait.until(ExpectedConditions.textToBe(dataSettings, text));
         return driver.findElement(dataSettings).getText();
     }
 }

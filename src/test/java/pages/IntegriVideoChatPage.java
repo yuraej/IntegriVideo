@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class IntegriVideoChatPage {
     By text = By.className("integri-chat-message");
     By edit = By.cssSelector("span.iv-icon.iv-icon-pencil.integri-chat-edit-message");
     By editText = By.tagName("textarea");
+    By delete = By.cssSelector("span.iv-icon.iv-icon-trash2.integri-chat-remove-message");
 
     public IntegriVideoChatPage(WebDriver driver){
         this.driver = driver;
@@ -62,5 +64,11 @@ public class IntegriVideoChatPage {
                                                              .replace("\r","");
         return textCode;
     }
+    public void deleteMessage(){
+        driver.findElement(delete).click();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
 
 }

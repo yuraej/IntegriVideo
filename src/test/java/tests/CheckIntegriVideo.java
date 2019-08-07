@@ -19,9 +19,10 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class CheckIntegriVideo {
     WebDriver driver;
+
     @BeforeClass
     public void startTest(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://dev.integrivideo.com/demo/chat/new");
@@ -44,6 +45,8 @@ public class CheckIntegriVideo {
         chat.settingsInput();
         chat.dragAndDrop();
         String textCode = chat.checkCode();
+        chat.deleteMessage();
+
         String textCodeMemory = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
         assertEquals(textCodeMemory, textCode);
     }
@@ -55,19 +58,19 @@ public class CheckIntegriVideo {
         settingsModal.inputEmail("yura@tut.by");
         settingsModal.inputAvatar("https://avatarko.ru/img/avatar/2/cherep_kapyushon_uzhasy_1606.jpg");
         settingsModal.setSaveSettings();
-
-        //assertEquals("BONE", settingsModal.checkDataSettings());
+        assertEquals("BONE", settingsModal.checkDataSettings("BONE"));
     }
 
     @Test
     public void checkIntegriVideoUploadFilesModal(){
         IntegriVideoUploadFilesModal loadFiles = new IntegriVideoUploadFilesModal(driver);
-        loadFiles.setDragAndDrop();
+        loadFiles.setDragAndDrop("C:\\Users\\ПК\\IdeaProjects\\IntegriVideo\\src\\test\\resources\\lev.jpg");
+
     }
 
-   @AfterClass
+ /*  @AfterClass
     public void endTest(){
         driver.quit();
-    }
+    }*/
 
 }
