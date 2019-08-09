@@ -22,7 +22,7 @@ public class IntegriVideoSettingsModal {
 
     public IntegriVideoSettingsModal(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver, 7);
+        wait = new WebDriverWait(driver, 5);
     }
 
     public void inputSettings (){
@@ -33,15 +33,17 @@ public class IntegriVideoSettingsModal {
         driver.findElement(guest).sendKeys(text);
     }
     public void inputEmail(String text){
+        driver.findElement(eMail).clear();
         driver.findElement(eMail).sendKeys(text);
     }
     public void inputAvatar(String link){
+        driver.findElement(avatar).clear();
         driver.findElement(avatar).sendKeys(link);
     }
     public void setSaveSettings(){
         driver.findElement(saveSettings).click();
     }
-    public String  checkDataSettings(String text){
+    public String checkDataSettings(String text){
         wait.until(ExpectedConditions.textToBe(dataSettings, text));
         return driver.findElement(dataSettings).getText();
     }
