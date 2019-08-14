@@ -20,30 +20,35 @@ public class IntegriVideoSettingsModal {
     By saveSettings = By.xpath("//button[text()='Save']");
     By dataSettings = By.className("integri-session-user-name");
 
-    public IntegriVideoSettingsModal(WebDriver driver){
+    public IntegriVideoSettingsModal(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 5);
     }
 
-    public void inputSettings (){
+    public void inputSettings() {
         driver.findElement(settings).click();
     }
-    public  void inputUserName(String text){
+
+    public void inputUserName(String text) {
         driver.findElement(guest).clear();
         driver.findElement(guest).sendKeys(text);
     }
-    public void inputEmail(String text){
+
+    public void inputEmail(String text) {
         driver.findElement(eMail).clear();
         driver.findElement(eMail).sendKeys(text);
     }
-    public void inputAvatar(String link){
+
+    public void inputAvatar(String link) {
         driver.findElement(avatar).clear();
         driver.findElement(avatar).sendKeys(link);
     }
-    public void setSaveSettings(){
+
+    public void setSaveSettings() {
         driver.findElement(saveSettings).click();
     }
-    public String checkDataSettings(String text){
+
+    public String checkDataSettings(String text) {
         wait.until(ExpectedConditions.textToBe(dataSettings, text));
         return driver.findElement(dataSettings).getText();
     }

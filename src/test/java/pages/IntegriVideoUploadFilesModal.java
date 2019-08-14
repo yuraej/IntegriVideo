@@ -6,19 +6,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class IntegriVideoUploadFilesModal {
-
     WebDriver driver;
     WebDriverWait wait;
     By dragAndDrop = By.cssSelector("span.integri-chat-manual-upload.integri-pointer");
+    By browse = By.className("integri-file-upload-manual-init");
     By dragAndDropStart = By.xpath("//button[text()='Start']");
+
     public IntegriVideoUploadFilesModal(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 7);
     }
 
-    public void setDragAndDrop (String linkToFile){
+    public void clickDragAndDrop(String linkToFile) {
         driver.findElement(dragAndDrop).click();
-        driver.findElement(By.xpath("//input[@type='file']")).sendKeys(linkToFile);
+        driver.findElement(browse).sendKeys(linkToFile);
         driver.findElement(dragAndDropStart).click();
         wait.until(ExpectedConditions.elementToBeClickable(dragAndDropStart));
     }

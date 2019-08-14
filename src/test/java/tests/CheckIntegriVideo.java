@@ -2,9 +2,7 @@ package tests;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.IntegriVideoSettingsModal;
 import pages.IntegriVideoChatPage;
 import pages.IntegriVideoUploadFilesModal;
@@ -21,7 +19,7 @@ public class CheckIntegriVideo {
     WebDriver driver;
 
     @BeforeClass
-    public void startTest(){
+    public void startTest() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -29,14 +27,16 @@ public class CheckIntegriVideo {
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
     }
 
-   @Test (priority = 1)
-   public void checkInputMessageByButton() {
-       IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
-       chat.inputMessage("test");
-       chat.sendMassageByButton();
-       assertEquals(chat.checkMessage("test"), "test");
-   }
-    @Test (priority = 2)
+    @Test
+    public void checkInputMessageByButton() {
+        IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
+        chat.openPage();
+        chat.inputMessage("test");
+        chat.sendMassageByButton();
+        assertEquals(chat.checkMessage("test"), "test");
+    }
+
+    @Test
     public void checkInputMessageByEnter() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
         chat.openPage();
@@ -45,18 +45,26 @@ public class CheckIntegriVideo {
         assertEquals(chat.checkMessage("test2"), "test2");
     }
 
-    @Test (priority = 3)
+    @Test
     public void checkEditMessage() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
+        chat.openPage();
+        chat.inputMessage("test");
+        chat.sendMassageByButton();
         chat.editMassage("test3");
         assertEquals(chat.checkMessage("test3"), "test3");
     }
-    @Test (priority = 4)
+
+    @Test
     public void checkDeleteMessage() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
+        chat.openPage();
+        chat.inputMessage("test");
+        chat.sendMassageByEnter();
         chat.deleteMessage();
         assertEquals(chat.checkMessage("removed..."), "removed...");
     }
+
     @Test
     public void checkInviteUser() throws IOException, UnsupportedFlavorException {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
@@ -64,6 +72,7 @@ public class CheckIntegriVideo {
         String link = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
         assertEquals(link, driver.getCurrentUrl());
     }
+
     @Test
     public void checkCopyCode() throws IOException, UnsupportedFlavorException {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
@@ -71,7 +80,8 @@ public class CheckIntegriVideo {
         String textCodeMemory = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
         assertEquals(textCodeMemory, textCode);
     }
-    @Test (priority = 5)
+
+    @Test
     public void checkSendEmptyMessage() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
         chat.openPage();
@@ -80,7 +90,8 @@ public class CheckIntegriVideo {
         chat.checkEmptyMessage();
         assertEquals("Message cannot be empty!", chat.checkEmptyMessage());
     }
-    @Test (priority = 6)
+
+    @Test
     public void checkSendThousandWords() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
         chat.openPage();
@@ -88,16 +99,18 @@ public class CheckIntegriVideo {
         chat.sendMassageByButton();
         assertEquals(TestData.thousandOfWords, driver.findElement(By.className("integri-chat-message-text")).getText().concat(" "));
     }
-    @Test (priority = 7)
+
+    @Test
     public void checkSendElevenMessage() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
         chat.openPage();
         chat.inputMessage(TestData.elevenMessages);
         chat.sendMassageByEnter();
         assertEquals(chat.checkSendElevenMassages(), "This is trial version\n" +
-                                                          "Sign up or Skip");
+                "Sign up or Skip");
     }
-    @Test (priority = 8)
+
+    @Test
     public void checkSendLinkMessage() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
         chat.openPage();
@@ -106,19 +119,20 @@ public class CheckIntegriVideo {
         assertEquals(chat.checkLinkByMassage("tut.by"), "http://tut.by/");
         chat.openPage();
     }
-    @Test (priority = 9)
+
+    @Test
     public void checkSendCodeMessage() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
         chat.openPage();
         chat.inputMessage("<html><body><p>test</p></body></html>");
         chat.sendMassageByEnter();
         assertEquals("<html><body><p>test</p></body></html>", chat.checkMessage("<html><body><p>test</p></body></html>"));
-         chat.settingsInput();
+        chat.settingsInput();
         chat.dragAndDrop();
     }
 
     @Test
-    public void InputSettingsModal(){
+    public void inputSettingsModal() {
         IntegriVideoSettingsModal settingsModal = new IntegriVideoSettingsModal(driver);
         settingsModal.inputSettings();
         settingsModal.inputUserName("BONE");
@@ -128,8 +142,8 @@ public class CheckIntegriVideo {
         assertEquals("BONE", settingsModal.checkDataSettings("BONE"));
     }
 
-    @Test (priority = 10)
-    public void RenameSettingsModal(){
+    @Test
+    public void renameSettingsModal() {
         IntegriVideoSettingsModal settingsModal = new IntegriVideoSettingsModal(driver);
         settingsModal.inputSettings();
         settingsModal.inputUserName("MAN");
@@ -139,19 +153,15 @@ public class CheckIntegriVideo {
         assertEquals("MAN", settingsModal.checkDataSettings("MAN"));
     }
 
-
-
-
-    @Test (priority = 11)
-    public void checkUploadFilesModal(){
+    @Test
+    public void checkUploadFilesModal() {
         IntegriVideoUploadFilesModal loadFiles = new IntegriVideoUploadFilesModal(driver);
-        loadFiles.setDragAndDrop("/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/lev.jpg");
-        loadFiles.setDragAndDrop("/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/volk.jpg");
+        loadFiles.clickDragAndDrop(TestData.linkFile1);
+        loadFiles.clickDragAndDrop(TestData.LinkFile2);
     }
 
     @AfterClass
-    public void endTest(){
+    public void endTest() {
         driver.quit();
     }
-
 }
