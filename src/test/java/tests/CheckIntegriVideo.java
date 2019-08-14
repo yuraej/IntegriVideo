@@ -156,8 +156,8 @@ public class CheckIntegriVideo {
     @Test
     public void checkUploadFilesModal() {
         IntegriVideoUploadFilesModal loadFiles = new IntegriVideoUploadFilesModal(driver);
-        loadFiles.clickDragAndDrop(TestData.linkFile1);
-        loadFiles.clickDragAndDrop(TestData.LinkFile2);
+        loadFiles.upLoadFiles(TestData.linkFile1);
+        loadFiles.upLoadFiles(TestData.LinkFile2);
     }
 
     @AfterClass

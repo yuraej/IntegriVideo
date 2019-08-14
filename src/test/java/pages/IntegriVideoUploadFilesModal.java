@@ -17,7 +17,7 @@ public class IntegriVideoUploadFilesModal {
         wait = new WebDriverWait(driver, 7);
     }
 
-    public void clickDragAndDrop(String linkToFile) {
+    public void upLoadFiles(String linkToFile) {
         driver.findElement(dragAndDrop).click();
         driver.findElement(browse).sendKeys(linkToFile);
         driver.findElement(dragAndDropStart).click();
