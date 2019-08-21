@@ -38,5 +38,6 @@ public class TestData {
 
     public static String linkFile1 = "/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/lev.jpg";
     public static String LinkFile2 = "/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/volk.jpg";
+    public static String urlLoginPage = "https://dev.integrivideo.com/login";
 
 }
