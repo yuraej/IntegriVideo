@@ -1,34 +1,25 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.LoginPageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class EnterByLoginPageFactory {
-    WebDriver driver;
+import static org.testng.AssertJUnit.assertEquals;
 
-    @BeforeClass
-    public void startTest() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
+public class EnterByLoginPageFactory extends BaseTest {
 
+    @Parameters({"userName", "password"})
     @Test
-    public void logIn() {
+    public void logIn(String userName, String password) {
         LoginPageFactory openSite = new LoginPageFactory(driver);
-        openSite.openLoginPage();
-        openSite.login("tms1@mailinator.com", "Password01");
-    }
-
-    @AfterClass
-    public void closeBrowser() {
-        driver.quit();
+        openSite.login(userName, password);
+        assertEquals("Projects", driver.findElement(By.className("nav-link")).getText() );
     }
 }

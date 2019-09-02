@@ -22,13 +22,10 @@ public class LoginPageFactory {
     }
 
     public LoginPageFactory login(String userName, String password) {
+        driver.get(TestData.loginPageURL);
         emailField.sendKeys(userName);
         passwordField.sendKeys(password);
         loginButton.click();
         return this;
-    }
-
-    public void openLoginPage() {
-        driver.get(TestData.urlLoginPage);
     }
 }

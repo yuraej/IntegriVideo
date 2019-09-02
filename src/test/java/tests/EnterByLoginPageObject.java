@@ -10,8 +10,8 @@ import pages.LoginPageObject;
 
 import java.util.concurrent.TimeUnit;
 
-public class EnterByLoginPageObject {
-    WebDriver driver;
+public class EnterByLoginPageObject extends BaseTest{
+    /*WebDriver driver;
 
     @BeforeClass
     public void startTest() {
@@ -19,17 +19,16 @@ public class EnterByLoginPageObject {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-    }
+    }*/
 
     @Test
     public void logIn() {
         LoginPageObject login = new LoginPageObject(driver);
-        login.openLoginPage();
         login.enterLoginData("tms1@mailinator.com", "Password01");
     }
 
-    @AfterClass
+   /* @AfterClass
     public void closeBrowser() {
         driver.quit();
-    }
+    }*/
 }

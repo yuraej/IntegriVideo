@@ -7,7 +7,7 @@ import tests.TestData;
 public class LoginPageObject {
     WebDriver driver;
 
-    By enterUserName = By.name("name");
+    By enterUserName = By.name("email");
     By enterPassword = By.name("password");
     By buttonEnter = By.cssSelector("button.btn.btn-primary");
 
@@ -16,11 +16,9 @@ public class LoginPageObject {
     }
 
     public void enterLoginData(String userName, String password) {
-        driver.findElement(enterPassword).sendKeys(userName);
+        driver.get(TestData.loginPageURL);
+        driver.findElement(enterUserName).sendKeys(userName);
         driver.findElement(enterPassword).sendKeys(password);
-    }
-
-    public void openLoginPage() {
-        driver.get(TestData.urlLoginPage);
+        driver.findElement(buttonEnter).click();
     }
 }
