@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 // этот класс описывает элементы страницы проекта
-public class TestProjectPage {
+public class EditProjectPage {
     private WebDriver driver;
 
     private By choseProject = By.cssSelector("div.circle");
@@ -18,7 +18,7 @@ public class TestProjectPage {
     private By updateButton = By.xpath("//button[text()='Update']");
 
 
-    public TestProjectPage(WebDriver driver) {
+    public EditProjectPage(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -1,22 +1,22 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.TestProjectPage;
+import pages.EditProjectPage;
 
 import java.util.Random;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-// класс, содержащий тесты для работы со страницей проекта
-public class TestingProjectPage extends BaseTest {
-    TestProjectPage projectPage;
+// класс, содержащий тесты для проверки редактирования проекта
+public class EditProjectPageTest extends BaseTest {
+    EditProjectPage projectPage;
     Random random = new Random();
 
     String nameProject, descriptionProject, nameDomains;
 
     @Test
     public void testingPageOfProject() {
-        projectPage = new TestProjectPage(driver);
+        projectPage = new EditProjectPage(driver);
         projectPage.enterTestProjectPage();
         nameProject = projectPage.getNameProject();
         descriptionProject = projectPage.getDescriptionProject();
@@ -39,7 +39,7 @@ public class TestingProjectPage extends BaseTest {
             dependsOnMethods = "testingPageOfProject",
             expectedExceptions = {AssertionError.class})
     public void checkEditProjectName() {
-        projectPage = new TestProjectPage(driver);
+        projectPage = new EditProjectPage(driver);
         projectPage.enterTestProjectPage();
         assertEquals(nameProject, projectPage.getNameProject());
 
@@ -49,7 +49,7 @@ public class TestingProjectPage extends BaseTest {
             dependsOnMethods = "testingPageOfProject",
             expectedExceptions = {AssertionError.class})
     public void checkEditProjectDescription() {
-        projectPage = new TestProjectPage(driver);
+        projectPage = new EditProjectPage(driver);
         projectPage.enterTestProjectPage();
         assertEquals(descriptionProject, projectPage.getDescriptionProject());
     }
@@ -58,7 +58,7 @@ public class TestingProjectPage extends BaseTest {
             dependsOnMethods = {"testingPageOfProject", "checkEditProjectName", "checkEditProjectDescription"},
             expectedExceptions = {AssertionError.class})
     public void checkEditProjectDomains() {
-        projectPage = new TestProjectPage(driver);
+        projectPage = new EditProjectPage(driver);
         projectPage.enterTestProjectPage();
         projectPage.editProject();
         assertEquals(nameDomains, projectPage.getDomains());

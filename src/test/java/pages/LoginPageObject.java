@@ -7,9 +7,9 @@ import tests.TestData;
 public class LoginPageObject {
     WebDriver driver;
 
-    By enterUserName = By.name("email");
-    By enterPassword = By.name("password");
-    By buttonEnter = By.cssSelector("button.btn.btn-primary");
+    private By enterUserName = By.name("email");
+    private By enterPassword = By.name("password");
+    private By buttonEnter = By.cssSelector("button.btn.btn-primary");
 
     public LoginPageObject(WebDriver driver) {
         this.driver = driver;
