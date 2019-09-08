@@ -36,19 +36,21 @@ public class TestData {
             "\n" +
             "Donec arcu mi, pulvinar eu dolor sit amet, pretium maximus turpis.";
 
-    public static String linkFile1 = "/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/lev.jpg";
-    public static String linkFile2 = "/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/volk.jpg";
+    static String linkFile1 = "/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/lev.jpg";
+    static String linkFile2 = "/home/yura/Документы/JAVA/IntegriVideo/src/test/resources/filesForTests/volk.jpg";
     public static String loginPageURL = "https://dev.integrivideo.com/login";
-    public static String projectsPageURL = "https://dev.integrivideo.com/app/projects";
-    public static String libraryURL = "https://dev.integrivideo.com/app/library/5d6a32ddaf76bd3145f85171/5d6a3649af76bd3145f85172";
-    public static String billingPageURL = "https://dev.integrivideo.com/app/billing";
-    public static String mainPageURL = "https://dev.integrivideo.com/";
-    public static String newProjectPageURL = "https://dev.integrivideo.com/app/projects/new";
-    public static String paymentMethodsPageURL = "https://dev.integrivideo.com/app/billing/payment-methods/new";
+    static String projectsPageURL = "https://dev.integrivideo.com/app/projects";
+    static String libraryURL = "https://dev.integrivideo.com/app/library/5d6a32ddaf76bd3145f85171/5d6a3649af76bd3145f85172";
+    static String billingPageURL = "https://dev.integrivideo.com/app/billing";
+    static String mainPageURL = "https://dev.integrivideo.com/";
+    static String newProjectPageURL = "https://dev.integrivideo.com/app/projects/new";
+    static String paymentMethodsPageURL = "https://dev.integrivideo.com/app/billing/payment-methods/new";
 
-    public static String numberCard1 = "4111111111111111";
-    public static String numberCard2 = "4012888888881881";
-    public static String cardExp = "2000";
-    public static String cardHolder = "Ivanov";
-
+    static String numberCard1 = "4111111111111111";
+    static String numberCard2 = "4012888888881881";
+    static String cardExp = "2000";
+    static String cardHolder = "Ivanov";
+    static String projectName = "New Project";
+    static String projectDescription = "this is test project";
+    static String domainName = "tut.by";
 }

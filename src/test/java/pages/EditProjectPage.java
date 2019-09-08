@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 // этот класс описывает элементы страницы проекта
 public class EditProjectPage {
@@ -20,46 +21,54 @@ public class EditProjectPage {
 
     public EditProjectPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public void enterTestProjectPage() {
+    public EditProjectPage enterTestProjectPage() {
         driver.findElement(choseProject).click();
+        return this;
     }
 
-    public void editProject() {
+    public EditProjectPage editProject() {
         driver.findElement(editProject).click();
+        return this;
     }
 
     public String getNameProject() {
         return driver.findElement(nameProject).getText();
     }
 
-    public void setNewNameProject(String text) {
+    public EditProjectPage setNewNameProject(String text) {
         driver.findElement(newNameProject).clear();
         driver.findElement(newNameProject).sendKeys(text);
+        return this;
     }
 
     public String getDescriptionProject() {
         return driver.findElement(descriptionProject).getText();
     }
 
-    public void setNewtDescriptionProject(String text) {
+    public EditProjectPage setNewtDescriptionProject(String text) {
         driver.findElement(newDescriptionProject).sendKeys(text);
+        return this;
     }
 
     public String getDomains() {
         return driver.findElement(domains).getAttribute("value");
     }
 
-    public void cleanDomainsArea() {
+    public EditProjectPage cleanDomainsArea() {
         driver.findElement(cleanDomainsButton).click();
+        return this;
     }
 
-    public void setNewDomainsProject(String text) {
+    public EditProjectPage setNewDomainsProject(String text) {
         driver.findElement(domains).sendKeys(text);
+        return this;
     }
 
-    public void setEditProject() {
+    public EditProjectPage setEditProject() {
         driver.findElement(updateButton).click();
+        return this;
     }
 }

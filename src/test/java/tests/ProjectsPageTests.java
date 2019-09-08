@@ -13,16 +13,16 @@ public class ProjectsPageTests extends BaseTest {
     public void testingProjectPage() {
         projectsPage = new ProjectsPage(driver);
         projectsPage.addProjectsButton();
-        checkAndReturn(TestData.newProjectPageURL);
+        checkCurrentURLAndGoBack(TestData.newProjectPageURL);
         projectsPage.projectsButton();
-        checkAndReturn(TestData.projectsPageURL);
+        checkCurrentURLAndGoBack(TestData.projectsPageURL);
         projectsPage.libraryButton();
-        checkAndReturn(TestData.libraryURL);
+        checkCurrentURLAndGoBack(TestData.libraryURL);
         projectsPage.billingButton();
-        checkAndReturn(TestData.billingPageURL);
+        checkCurrentURLAndGoBack(TestData.billingPageURL);
         projectsPage.logOutButton();
-        checkAndReturn(TestData.mainPageURL);
+        checkCurrentURLAndGoBack(TestData.mainPageURL);
         projectsPage.integriVideoButton();
-        checkAndReturn(TestData.mainPageURL);
+        checkCurrentURLAndGoBack(TestData.mainPageURL);
     }
 }

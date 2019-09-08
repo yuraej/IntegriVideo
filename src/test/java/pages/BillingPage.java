@@ -7,14 +7,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import tests.TestData;
+import tests.Card;
 
 import java.util.List;
 
 public class BillingPage {
-    WebDriver driver;
-    WebDriverWait wait;
-    ProjectsPage projectsPage;
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private ProjectsPage projectsPage;
+    public static int counter = 0;
 
     @FindBy(linkText = "Add new")
     private WebElement openPagePaymentMethods;
@@ -47,29 +48,26 @@ public class BillingPage {
         return this;
     }
 
-    public static int counter = 0;
-
-    public BillingPage createPaymentMethod() {
+    public void createPaymentMethod(Card card) {
         counter++;
-        numberCard.sendKeys(TestData.numberCard1);
+        numberCard.sendKeys(card.getNumberCard());
         expirationMonth.sendKeys("12");
-        expirationYear.sendKeys(TestData.cardExp);
-        cardHolderName.sendKeys(TestData.cardHolder);
+        expirationYear.sendKeys(card.getExpirationYear());
+        cardHolderName.sendKeys(card.getCardHolderName());
         wait.until(ExpectedConditions.elementToBeClickable(add));
         add.click();
-        return this;
     }
 
-    public int checkCards() {
+    public int getNumberOfCards() {
         return cards.size();
     }
 
-    public void removePaymentMethod(int number) {
+    public BillingPage removePaymentMethod(int number) {
         driver.findElements(removePaymentMethod).get(number - 1).click();
+        return this;
     }
 
     public void makeDefaultPaymentMethod(int number) {
-        driver.findElement(By.xpath("//div[@class='col-md-3']//a" + "[" + number + "]")).click();
+        driver.findElements(By.xpath("//div[@class='col-md-3']")).get(number - 1).click();
     }
-
 }

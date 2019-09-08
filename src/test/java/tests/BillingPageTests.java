@@ -1,38 +1,44 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.BillingPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class BillingPageTests extends BaseTest {
-    BillingPage billingPage;
-    private int counter;
+import static org.testng.Assert.assertEquals;
 
-    @Test(invocationCount = 3)
+public class BillingPageTests extends BaseTest {
+    private BillingPage billingPage;
+    private int counter;
+    private Card card = new Card(TestData.numberCard1, TestData.cardExp, TestData.cardHolder);
+    private int choiceNumberPayMethod = 2;
+
+    @Test(invocationCount = 3)          // invocation добавлено в учебных целях: для закрепления материала
     public void testingBillingPage() {
-        billingPage = new BillingPage(driver);
-        billingPage.openPagePaymentMethods();
-        checkAndReturn(TestData.paymentMethodsPageURL);
-        billingPage.openPagePaymentMethods();
-        billingPage.createPaymentMethod();
-        checkNumberElements(BillingPage.counter, billingPage.checkCards());
+        billingPage = new BillingPage(driver).
+                openPagePaymentMethods();
+        checkCurrentURLAndGoBack(TestData.paymentMethodsPageURL);
+        billingPage.openPagePaymentMethods().
+                createPaymentMethod(card);
+        checkNumberElements(BillingPage.counter, billingPage.getNumberOfCards());
         counter = BillingPage.counter;
     }
 
-    @Test(dependsOnMethods = "testingBillingPage",
-            invocationCount = 3)
-    public void checkRemovePaymentMethods() {
+    @Test(dependsOnMethods = "testingBillingPage")
+    public void makeAndCheckDefaultPaymentMethod() {
         billingPage = new BillingPage(driver);
-        checkNumberElements(billingPage.checkCards(), counter);
-        billingPage.removePaymentMethod(1);                 // метод может удалять карты в любой последовательности
-        counter--;
+        billingPage.makeDefaultPaymentMethod(choiceNumberPayMethod);
+        assertEquals("Default", driver.findElements(By.xpath("//div[@class='col-md-3']")).get(choiceNumberPayMethod - 1).getText());
     }
 
- /*   @Test(dependsOnMethods = "testingBillingPage")
-    public void test2() {
+    @Test(dependsOnMethods = {"testingBillingPage", "makeAndCheckDefaultPaymentMethod"})
+    public void checkRemovePaymentMethods() {
         billingPage = new BillingPage(driver);
-        driver.get("https://dev.integrivideo.com/app/billing");
-        billingPage.makeDefaultPaymentMethod(2);
-    }*/
+        checkNumberElements(billingPage.getNumberOfCards(), counter);
+        billingPage.removePaymentMethod(3).
+                removePaymentMethod(2).
+                removePaymentMethod(1);
+        counter--;
+    }
 }

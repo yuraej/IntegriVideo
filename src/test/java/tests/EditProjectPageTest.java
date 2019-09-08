@@ -9,25 +9,25 @@ import static org.testng.AssertJUnit.assertEquals;
 
 // класс, содержащий тесты для проверки редактирования проекта
 public class EditProjectPageTest extends BaseTest {
-    EditProjectPage projectPage;
-    Random random = new Random();
+    private EditProjectPage projectPage;
+    private Random random = new Random();
 
-    String nameProject, descriptionProject, nameDomains;
+    private String nameProject, descriptionProject, nameDomains;
 
     @Test
-    public void testingPageOfProject() {
+    public void editProjectDetails() {
         projectPage = new EditProjectPage(driver);
-        projectPage.enterTestProjectPage();
-        nameProject = projectPage.getNameProject();
+        projectPage.enterTestProjectPage().
+                getNameProject();
         descriptionProject = projectPage.getDescriptionProject();
         projectPage.editProject();
         nameDomains = projectPage.getDomains();
         projectPage.cleanDomainsArea();
         assertEquals("", projectPage.getDomains());       // проверка кнопки очистки поля "Domains"
-        projectPage.setNewNameProject("new name project" + random.nextInt(12));
-        projectPage.setNewtDescriptionProject("new description project" + random.nextInt(10));
-        projectPage.setNewDomainsProject("newDomain" + random.nextInt(77) + ".com");
-        projectPage.setEditProject();
+        projectPage.setNewNameProject("new name project" + random.nextInt(12)).
+                setNewtDescriptionProject("new description project" + random.nextInt(10)).
+                setNewDomainsProject("newDomain" + random.nextInt(77) + ".com").
+                setEditProject();
     }
 
     /*  знаю, что тесты должны быть независимыми друг от друго, но данная зависимость логически обоснованна
@@ -36,31 +36,30 @@ public class EditProjectPageTest extends BaseTest {
 
     @Test(description = "тесты данной группы проверяют сохранение данных после редактирования проекта",
             groups = "check edit project",
-            dependsOnMethods = "testingPageOfProject",
+            dependsOnMethods = "editProjectDetails",
             expectedExceptions = {AssertionError.class})
     public void checkEditProjectName() {
-        projectPage = new EditProjectPage(driver);
-        projectPage.enterTestProjectPage();
+        projectPage = new EditProjectPage(driver).
+                enterTestProjectPage();
         assertEquals(nameProject, projectPage.getNameProject());
-
     }
 
     @Test(groups = "check edit project",
-            dependsOnMethods = "testingPageOfProject",
+            dependsOnMethods = "editProjectDetails",
             expectedExceptions = {AssertionError.class})
     public void checkEditProjectDescription() {
-        projectPage = new EditProjectPage(driver);
-        projectPage.enterTestProjectPage();
+        projectPage = new EditProjectPage(driver).
+                enterTestProjectPage();
         assertEquals(descriptionProject, projectPage.getDescriptionProject());
     }
 
     @Test(groups = "check edit project",
-            dependsOnMethods = {"testingPageOfProject", "checkEditProjectName", "checkEditProjectDescription"},
+            dependsOnMethods = {"editProjectDetails", "checkEditProjectName", "checkEditProjectDescription"},
             expectedExceptions = {AssertionError.class})
     public void checkEditProjectDomains() {
-        projectPage = new EditProjectPage(driver);
-        projectPage.enterTestProjectPage();
-        projectPage.editProject();
+        projectPage = new EditProjectPage(driver).
+                enterTestProjectPage().
+                editProject();
         assertEquals(nameDomains, projectPage.getDomains());
     }
 }

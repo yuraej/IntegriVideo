@@ -17,7 +17,7 @@ public class BaseTest {
         assertEquals(numberExpect, numberActual);
     }
 
-    protected void checkAndReturn(String pageLink) {
+    protected void checkCurrentURLAndGoBack(String pageLink) {
         assertEquals(pageLink, driver.getCurrentUrl());
         driver.navigate().back();
     }
