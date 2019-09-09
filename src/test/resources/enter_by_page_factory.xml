@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test suite" parallel="methods">
+    <test name="TEST: login in ">
+        <classes>
+            <class name="tests.EnterByLoginPageFactory"/>
+            <parameter name="userName" value="tms1@mailinator.com"/>
+            <parameter name="password" value="Password01"/>
+        </classes>
+    </test>
+</suite>

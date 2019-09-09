@@ -31,9 +31,9 @@ public class CheckIntegriVideo {
     public void checkInputMessageByButton() {
         IntegriVideoChatPage chat = new IntegriVideoChatPage(driver);
         chat.openPage();
-        chat.inputMessage("test");
+        chat.inputMessage(System.getProperty("testProp"));
         chat.sendMassageByButton();
-        assertEquals(chat.checkMessage("test"), "test");
+        assertEquals(chat.checkMessage("test123"), "test123");
     }
 
     @Test
@@ -157,11 +157,11 @@ public class CheckIntegriVideo {
     public void checkUploadFilesModal() {
         IntegriVideoUploadFilesModal loadFiles = new IntegriVideoUploadFilesModal(driver);
         loadFiles.upLoadFiles(TestData.linkFile1);
-        loadFiles.upLoadFiles(TestData.LinkFile2);
+        loadFiles.upLoadFiles(TestData.linkFile2);
     }
 
-    @AfterClass
+  /*  @AfterClass
     public void endTest() {
         driver.quit();
-    }
+    }*/
 }
