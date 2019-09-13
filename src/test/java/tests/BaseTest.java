@@ -32,8 +32,8 @@ public class BaseTest {
         login.enterLoginData("tms1@mailinator.com", "Password01");
     }
 
-  /*  @AfterClass
+    @AfterClass
     void quitBrowser() {
         driver.quit();
-    }*/
+    }
 }
