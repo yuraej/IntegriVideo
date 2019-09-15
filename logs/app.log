@@ -1,0 +1,58 @@
+2019-36-15 13:36:45.936 [main] INFO  tests.BaseTest - Подключаем драйвер для браузера Хром
+2019-36-15 13:36:46.906 [main] INFO  tests.BaseTest - Устанавливаем временные задержки для неявного ожидания - 5 сек.
+2019-36-15 13:36:46.906 [main] INFO  tests.BaseTest - Устанавливаем максимальный размер окна браузера
+2019-36-15 13:36:47.034 [main] INFO  tests.BaseTest - Вводим имя пользователя и пароль
+2019-36-15 13:36:53.504 [main] INFO  pages.EditProjectPage - Открываем страницу тестов
+2019-36-15 13:36:54.513 [main] INFO  pages.EditProjectPage - Получаем название проекта
+2019-36-15 13:36:54.581 [main] INFO  pages.EditProjectPage - Получаем описание проекта
+2019-36-15 13:36:55.369 [main] INFO  pages.EditProjectPage - Получаем название домена проекта
+2019-36-15 13:36:55.405 [main] INFO  pages.EditProjectPage - Очистили поле домена при помощи кнопки этого поля
+2019-36-15 13:36:55.456 [main] INFO  pages.EditProjectPage - Получаем название домена проекта
+2019-36-15 13:36:55.486 [main] INFO  pages.EditProjectPage - Устанавливаем новое имя проекта
+2019-36-15 13:36:55.632 [main] INFO  pages.EditProjectPage - Устанавливаем новое описание проекта
+2019-36-15 13:36:55.762 [main] INFO  pages.EditProjectPage - Установили новый домен проекта
+2019-36-15 13:36:55.881 [main] INFO  pages.EditProjectPage - Обновили проект - сохранили изменения
+2019-36-15 13:36:55.970 [main] INFO  pages.EditProjectPage - Открываем страницу тестов
+2019-36-15 13:36:58.261 [main] INFO  pages.EditProjectPage - Получаем описание проекта
+2019-36-15 13:36:58.298 [main] INFO  pages.EditProjectPage - Открываем страницу тестов
+2019-36-15 13:36:58.354 [main] INFO  pages.EditProjectPage - Получаем название проекта
+2019-36-15 13:36:58.398 [main] INFO  pages.EditProjectPage - Открываем страницу тестов
+2019-36-15 13:36:59.103 [main] INFO  pages.EditProjectPage - Получаем название домена проекта
+2019-36-15 13:36:59.130 [main] INFO  tests.BaseTest - Тест отработал, выходим из браузера
+2019-38-15 13:38:39.288 [main] INFO  tests.BaseTest - Подключаем драйвер для браузера Хром
+2019-38-15 13:38:40.228 [main] INFO  tests.BaseTest - Устанавливаем временные задержки для неявного ожидания - 5 сек.
+2019-38-15 13:38:40.228 [main] INFO  tests.BaseTest - Устанавливаем максимальный размер окна браузера
+2019-38-15 13:38:40.357 [main] INFO  tests.BaseTest - Вводим имя пользователя и пароль
+2019-38-15 13:38:45.484 [main] INFO  pages.EditProjectPage - Открываем страницу проектов
+2019-38-15 13:38:46.515 [main] INFO  pages.EditProjectPage - Получаем название проекта
+2019-38-15 13:38:46.546 [main] INFO  pages.EditProjectPage - Получаем описание проекта
+2019-38-15 13:38:47.406 [main] INFO  pages.EditProjectPage - Получаем название домена проекта
+2019-38-15 13:38:47.441 [main] INFO  pages.EditProjectPage - Очистили поле домена при помощи кнопки этого поля
+2019-38-15 13:38:47.503 [main] INFO  pages.EditProjectPage - Получаем название домена проекта
+2019-38-15 13:38:47.546 [main] INFO  pages.EditProjectPage - Устанавливаем новое имя проекта
+2019-38-15 13:38:47.717 [main] INFO  pages.EditProjectPage - Устанавливаем новое описание проекта
+2019-38-15 13:38:47.841 [main] INFO  pages.EditProjectPage - Установили новый домен проекта
+2019-38-15 13:38:47.973 [main] INFO  pages.EditProjectPage - Обновили проект - сохранили изменения
+2019-38-15 13:38:48.052 [main] INFO  pages.EditProjectPage - Открываем страницу проектов
+2019-38-15 13:38:50.277 [main] INFO  pages.EditProjectPage - Получаем описание проекта
+2019-38-15 13:38:50.309 [main] INFO  pages.EditProjectPage - Открываем страницу проектов
+2019-38-15 13:38:50.371 [main] INFO  pages.EditProjectPage - Получаем название проекта
+2019-38-15 13:38:50.411 [main] INFO  pages.EditProjectPage - Открываем страницу проектов
+2019-38-15 13:38:52.004 [main] INFO  pages.EditProjectPage - Получаем название домена проекта
+2019-38-15 13:38:52.028 [main] INFO  tests.BaseTest - Тест отработал, выходим из браузера
+2019-41-15 13:41:04.328 [main] INFO  tests.BaseTest - Подключаем драйвер для браузера Хром
+2019-41-15 13:41:05.325 [main] INFO  tests.BaseTest - Устанавливаем временные задержки для неявного ожидания - 5 сек.
+2019-41-15 13:41:05.325 [main] INFO  tests.BaseTest - Устанавливаем максимальный размер окна браузера
+2019-41-15 13:41:05.461 [main] INFO  tests.BaseTest - Вводим имя пользователя и пароль
+2019-41-15 13:41:10.192 [main] INFO  pages.BillingPage - Открываем страницу с кредитными карточками
+2019-41-15 13:41:13.521 [main] INFO  pages.BillingPage - Открываем страницу с кредитными карточками
+2019-41-15 13:41:15.222 [main] INFO  pages.BillingPage - Добавляем кредитную карточку
+2019-41-15 13:41:26.845 [main] INFO  pages.BillingPage - Открываем страницу с кредитными карточками
+2019-41-15 13:41:28.755 [main] INFO  pages.BillingPage - Открываем страницу с кредитными карточками
+2019-41-15 13:41:32.054 [main] INFO  pages.BillingPage - Добавляем кредитную карточку
+2019-41-15 13:41:37.089 [main] INFO  pages.BillingPage - Получаем число кредитных карточек в проекте
+2019-41-15 13:41:39.937 [main] INFO  pages.BillingPage - Открываем страницу с кредитными карточками
+2019-41-15 13:41:43.272 [main] INFO  pages.BillingPage - Открываем страницу с кредитными карточками
+2019-41-15 13:41:44.787 [main] INFO  pages.BillingPage - Добавляем кредитную карточку
+2019-41-15 13:41:49.611 [main] INFO  pages.BillingPage - Получаем число кредитных карточек в проекте
+2019-41-15 13:41:52.818 [main] INFO  tests.BaseTest - Тест отработал, выходим из браузера

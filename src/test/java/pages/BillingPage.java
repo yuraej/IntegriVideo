@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,8 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import tests.Card;
 
 import java.util.List;
-
+@Log4j2
 public class BillingPage {
+
     private WebDriver driver;
     private WebDriverWait wait;
     private ProjectsPage projectsPage;
@@ -42,6 +44,7 @@ public class BillingPage {
     }
 
     public BillingPage openPagePaymentMethods() {
+        log.info("Открываем страницу с кредитными карточками");
         projectsPage = new ProjectsPage(driver);  // эта и следующая для открытия страницы .../app billing
         projectsPage.billingButton();
         openPagePaymentMethods.click();
@@ -49,6 +52,7 @@ public class BillingPage {
     }
 
     public void createPaymentMethod(Card card) {
+        log.info("Добавляем кредитную карточку");
         counter++;
         numberCard.sendKeys(card.getNumberCard());
         expirationMonth.sendKeys("12");
@@ -59,10 +63,12 @@ public class BillingPage {
     }
 
     public int getNumberOfCards() {
+        log.info("Получаем число кредитных карточек в проекте");
         return cards.size();
     }
 
     public BillingPage removePaymentMethod(int number) {
+        log.info("Удаляем кредитную карточку из проекта");
         driver.findElements(removePaymentMethod).get(number - 1).click();
         return this;
     }
