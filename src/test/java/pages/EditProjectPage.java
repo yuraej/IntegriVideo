@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,22 +27,26 @@ public class EditProjectPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step
     public EditProjectPage enterTestProjectPage() {
-        log.info("Открываем страницу проектов");
+        log.info("Открываем страницу проекта");
         driver.findElement(choseProject).click();
         return this;
     }
 
+    @Step
     public EditProjectPage editProject() {
         driver.findElement(editProject).click();
         return this;
     }
 
+    @Step
     public String getNameProject() {
         log.info("Получаем название проекта");
         return driver.findElement(nameProject).getText();
     }
 
+    @Step
     public EditProjectPage setNewNameProject(String text) {
         log.info("Устанавливаем новое имя проекта");
         driver.findElement(newNameProject).clear();
@@ -49,37 +54,42 @@ public class EditProjectPage {
         return this;
     }
 
+    @Step
     public String getDescriptionProject() {
         log.info("Получаем описание проекта");
         return driver.findElement(descriptionProject).getText();
     }
 
+    @Step
     public EditProjectPage setNewtDescriptionProject(String text) {
         log.info("Устанавливаем новое описание проекта");
         driver.findElement(newDescriptionProject).sendKeys(text);
         return this;
     }
 
+    @Step
     public String getDomains() {
         log.info("Получаем название домена проекта");
         return driver.findElement(domains).getAttribute("value");
     }
 
+    @Step
     public EditProjectPage cleanDomainsArea() {
         log.info("Очистили поле домена при помощи кнопки этого поля");
         driver.findElement(cleanDomainsButton).click();
         return this;
     }
 
+    @Step
     public EditProjectPage setNewDomainsProject(String text) {
         log.info("Установили новый домен проекта");
         driver.findElement(domains).sendKeys(text);
         return this;
     }
 
-    public EditProjectPage setEditProject() {
+    @Step
+    public void setEditProject() {
         log.info("Обновили проект - сохранили изменения");
         driver.findElement(updateButton).click();
-        return this;
     }
 }
