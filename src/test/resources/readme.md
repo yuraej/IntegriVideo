@@ -1,4 +1,4 @@
-                         ШПАРГАЛКА ПО КАМАНДАМ MAVIN ДЛЯ ТЕРМИНАЛА:
+                         ШПАРГАЛКА ПО КАМАНДАМ MAVEN ДЛЯ ТЕРМИНАЛА:
                   
 Команда отображения всех зависимостей для которых есть обновления MAVEN:
        mvn versions:display-dependency-updates
@@ -47,5 +47,6 @@
     }
        mvn test -Dtest=CheckIntegriVideo#checkInputMessageByButton test -DtestProp=test123      
         
-       
+Команда для добавления переменной среды:
+        PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/yura/Документы/BIN/allure-commandline-2.13.0/allure-2.13.0/bin       
      
